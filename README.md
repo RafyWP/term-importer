@@ -1,3 +1,3 @@
-# TermsToTax: Terms Importer for WordPress Custom Taxonomies
+# Terms Importer for WordPress Custom Taxonomies
 
-Imports terms from a CSV file into custom taxonomies in WordPress.
+TermsToTax imports Terms from a CSV file into Custom Taxonomies in WordPress.
