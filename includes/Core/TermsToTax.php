@@ -172,7 +172,7 @@ class TermsToTax {
                 );
 
                 if ( is_wp_error( $result ) ) {
-                    throw new ImporterException( sprintf( __( 'Could not add the term "%s". It may already exist or have a conflict with an existing one.', 'terms-to-tax' ), $term_name ) );
+                    throw new ImporterException( sprintf( __( 'Could not add the term "%s". It may already exist, have a conflicting slug, contain invalid characters, or be missing required fields.', 'terms-to-tax' ), $term_name ) );
                 }
             }
 
