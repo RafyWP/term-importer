@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name:       TermsToTax: Terms Importer for WordPress Custom Taxonomies
+ * Plugin Name:       TermsToTax
  * Plugin URI:        https://rafy.com.br/
- * Description:       Imports terms from a CSV file into custom taxonomies in WordPress.
+ * Description:       Terms Importer for WordPress Custom Taxonomies. Imports terms from a CSV file into custom taxonomies in WordPress.
  * Version:           1.0.0
  * Requires at least: 5.2
  * Requires PHP:      7.2

@@ -1,48 +1,65 @@
-# Wordpress - ignore core, configuration, examples, uploads and logs.
-# https://github.com/github/gitignore/blob/main/WordPress.gitignore
+# 🚀 WordPress Plugin GitIgnore for TermsToTax
 
-# Core
-#
-# Note: if you want to stage/commit WP core files
-# you can delete this whole section/until Configuration.
-/wp-admin/
-/wp-content/index.php
-/wp-content/languages
-/wp-content/plugins/index.php
-/wp-content/themes/index.php
-/wp-includes/
-/index.php
-/license.txt
-/readme.html
-/wp-*.php
-/xmlrpc.php
+# 💾 Ignore OS-generated files
+.DS_Store
+Thumbs.db
 
-# Configuration
-wp-config.php
+# 🔄 Ignore Composer dependencies (only if installed via Composer)
+vendor/
+composer.lock
 
-# Example themes
-/wp-content/themes/twenty*/
+# 🏗 Ignore Node.js & Build Files (if used in development)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Example plugin
-/wp-content/plugins/hello.php
+# 📝 Ignore IDE-specific files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
 
-# Uploads
-/wp-content/uploads/
-
-# Log files
+# 🔥 Ignore logs & temp files
+debug.log
+wp-content/debug.log
 *.log
 
-# htaccess
-/.htaccess
+# 📂 Ignore backup files
+*.bak
+*.swp
+*.swo
+*.swn
 
-# All plugins
-#
-# Note: If you wish to whitelist plugins,
-# uncomment the next line
-#/wp-content/plugins
+# 🔄 Ignore WordPress core files (if repo is in /wp-content/plugins/)
+wp-admin/
+wp-includes/
 
-# All themes
-#
-# Note: If you wish to whitelist themes,
-# uncomment the next line
-#/wp-content/themes
+# 🚫 Ignore WordPress uploads & cache
+wp-content/uploads/
+wp-content/cache/
+
+# 🚀 Ignore Local Environment Files
+.env
+.env.local
+.env.*.local
+
+# 📦 Ignore dependency manager files
+package-lock.json
+yarn.lock
+
+# 🔧 Ignore PHPUnit test results (if using PHPUnit)
+phpunit.xml
+phpunit.xml.dist
+tests/_output/
+tests/_support/_generated/
+
+# ⚙ Ignore WP-CLI config (if applicable)
+wp-cli.local.yml
+wp-cli.yml
+
+# 🔍 Ignore Hidden System Files
+.svn/
+.cvs/
+.hg/
+.bzr/
