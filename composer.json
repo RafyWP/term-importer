@@ -1,0 +1,21 @@
+{
+    "name": "rafyco/terms-to-tax",
+    "description": "Imports terms from a CSV file into custom taxonomies in WordPress.",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Rafy Co.",
+            "email": "rafy@rafy.com.br",
+            "homepage": "https://rafy.com.br"
+        }
+    ],
+    "require": {
+        "php": ">=7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "RafyCo\\TermsToTax\\": "includes/"
+        }
+    }
+}
