@@ -2,8 +2,8 @@
 
 **TermsToTax** simplifies term management by allowing you to **bulk import terms** into any **WordPress custom taxonomy** with just a few clicks. Upload a **CSV file**, select your target taxonomy, and let the plugin handle the rest—no manual data entry required!
 
-![Admin Panel Dashboard](https://repository-images.githubusercontent.com/950337483/b0a156e2-24cb-4cbf-907c-bd6bba5db64a)  
-*Admin Panel Dashboard*
+![Terms Importer for WordPress Custom Taxonomies](https://repository-images.githubusercontent.com/950337483/b0a156e2-24cb-4cbf-907c-bd6bba5db64a)  
+*Effortless Term Management – Import, Organize, and Simplify!*
 
 ## 🚀 Features
 
