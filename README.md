@@ -1,8 +1,8 @@
-# Terms Importer for WordPress Custom Taxonomies
+# Term Importer for WordPress Custom Taxonomies
 
-**TermsToTax** simplifies term management by allowing you to **bulk import terms** into any **WordPress custom taxonomy** with just a few clicks. Upload a **CSV file**, select your target taxonomy, and let the plugin handle the rest—no manual data entry required!
+**TermImporter** simplifies term management by allowing you to **bulk import terms** into any **WordPress custom taxonomy** with just a few clicks. Upload a **CSV file**, select your target taxonomy, and let the plugin handle the rest—no manual data entry required!
 
-![Terms Importer for WordPress Custom Taxonomies](https://repository-images.githubusercontent.com/950337483/b0a156e2-24cb-4cbf-907c-bd6bba5db64a)  
+![Term Importer for WordPress Custom Taxonomies](https://repository-images.githubusercontent.com/950337483/b0a156e2-24cb-4cbf-907c-bd6bba5db64a)  
 *Effortless Term Management – Import, Organize, and Simplify!*
 
 ## 🚀 Features
@@ -19,20 +19,20 @@
 ## 🔧 Installation
 
 ### Install via WordPress Plugin Upload
-1. Download the **TermsToTax** plugin as a `.zip` file.
+1. Download the **TermImporter** plugin as a `.zip` file.
 2. Go to **WordPress Dashboard** → **Plugins** → **Add New**.
 3. Click **Upload Plugin**, then select the `.zip` file and click **Install Now**.
 4. Activate the plugin.
 
 ### Install via FTP
-1. Extract the `.zip` file and upload the `terms-to-tax` folder to your `/wp-content/plugins/` directory.
+1. Extract the `.zip` file and upload the `term-importer` folder to your `/wp-content/plugins/` directory.
 2. Go to **WordPress Dashboard** → **Plugins**.
-3. Find **TermsToTax** in the list and click **Activate**.
+3. Find **TermImporter** in the list and click **Activate**.
 
 ### Install via Composer (Advanced Users)
 Run the following command in your WordPress project root:
 
-    composer require rafyco/terms-to-tax
+    composer require rafyco/term-importer
 
 After installation, run:
 
@@ -57,7 +57,7 @@ Ensure your CSV file follows this structure:
 - The `description` is optional.
 
 ### Upload CSV File
-1. Go to **WordPress Dashboard** → **Terms Importer**.
+1. Go to **WordPress Dashboard** → **Term Importer**.
 2. Select the taxonomy where the terms should be imported.
 3. Upload the CSV file and click **Import Terms**.
 4. The plugin will process the CSV and insert the terms into WordPress.
@@ -72,7 +72,7 @@ If something goes wrong, enable debugging in `wp-config.php`:
     define('WP_DEBUG_LOG', true);
     define('WP_DEBUG_DISPLAY', false);
 
-Logs will be saved in `wp-content/debug.log`. Errors related to **TermsToTax** will be prefixed with `[TermsToTax]`.
+Logs will be saved in `wp-content/debug.log`. Errors related to **TermImporter** will be prefixed with `[TermImporter]`.
 
 ---
 
@@ -98,7 +98,7 @@ This plugin is licensed under the **GPL-2.0-or-later**. See [LICENSE](https://ww
 ## 📬 Support
 
 For support and feature requests, visit:  
-🔗 [https://rafy.com.br/project/terms-to-tax/](https://rafy.com.br/project/terms-to-tax/)  
+🔗 [https://rafy.com.br/project/term-importer/](https://rafy.com.br/project/term-importer/)  
 
 ---
 

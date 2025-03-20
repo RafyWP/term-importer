@@ -1,6 +1,6 @@
 <?php
 
-namespace RafyCo\TermsToTax\Exceptions;
+namespace RafyCo\TermImporter\Exceptions;
 
 use Exception;
 
@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Class ImporterException
  *
- * Custom exception for handling import errors in TermsToTax.
+ * Custom exception for handling import errors in TermImporter.
  */
 class ImporterException extends Exception {
 
@@ -21,6 +21,6 @@ class ImporterException extends Exception {
      * @return void
      */
     public function log(): void {
-        \RafyCo\TermsToTax\Core\Debugger::log( $this->getMessage() );
+        \RafyCo\TermImporter\Core\Debugger::log( $this->getMessage() );
     }
 }

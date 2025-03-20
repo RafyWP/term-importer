@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name:       TermsToTax Lite
- * Plugin URI:        https://rafy.com.br/project/terms-to-tax/
+ * Plugin Name:       Term Importer Lite
+ * Plugin URI:        https://rafy.com.br/project/term-importer/
  * Description:       Easily import terms into any custom taxonomy in WordPress using a simple CSV file. Save time, streamline your workflow, and manage taxonomies effortlessly—no manual input needed!
  * Version:           1.0.0
  * Requires at least: 5.2
@@ -10,11 +10,11 @@
  * Author URI:        https://rafy.com.br/
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       terms-to-tax
+ * Text Domain:       term-importer
  * Domain Path:       /languages
- * Update URI:        https://github.com/RafyWP/terms-to-tax/tree/master
+ * Update URI:        https://github.com/RafyWP/term-importer/tree/master
  *
- * @package           RafyCo\TermsToTax
+ * @package           RafyCo\TermImporter
  * @author            Rafy Co.
  * @copyright         2025 Rafy Co.
  * @license           GPL-2.0-or-later
@@ -32,9 +32,9 @@ if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
 /**
  * Initialize the plugin.
  */
-function terms_to_tax_initialize() {
-    if ( class_exists( 'RafyCo\\TermsToTax\\Core\\TermsToTax' ) ) {
-        RafyCo\TermsToTax\Core\TermsToTax::init();
+function term_importer_initialize() {
+    if ( class_exists( 'RafyCo\\TermImporter\\Core\\TermImporter' ) ) {
+        RafyCo\TermImporter\Core\TermImporter::init();
     }
 }
-add_action( 'plugins_loaded', 'terms_to_tax_initialize' );
+add_action( 'plugins_loaded', 'term_importer_initialize' );

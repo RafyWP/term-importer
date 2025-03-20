@@ -1,10 +1,10 @@
 <?php
 
-namespace RafyCo\TermsToTax\Core;
+namespace RafyCo\TermImporter\Core;
 
-use RafyCo\TermsToTax\Helpers\CSVParser;
-use RafyCo\TermsToTax\Exceptions\ImporterException;
-use RafyCo\TermsToTax\Core\Debugger;
+use RafyCo\TermImporter\Helpers\CSVParser;
+use RafyCo\TermImporter\Exceptions\ImporterException;
+use RafyCo\TermImporter\Core\Debugger;
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Main plugin class.
  */
-class TermsToTax {
+class TermImporter {
     
     /**
      * Initializes the plugin.
@@ -22,7 +22,7 @@ class TermsToTax {
      */
     public static function init(): void {
         add_action( 'admin_menu', [ self::class, 'add_admin_menu' ] );
-        add_action( 'admin_post_terms_to_tax_import', [ self::class, 'handle_import' ] );
+        add_action( 'admin_post_term_importer_import', [ self::class, 'handle_import' ] );
     }
 
     /**
@@ -48,10 +48,10 @@ class TermsToTax {
      */
     public static function add_admin_menu(): void {
         add_menu_page(
-            __( 'Terms Importer to Taxonomy', 'terms-to-tax' ),
-            __( 'Terms Importer', 'terms-to-tax' ),
+            __( 'Term Importer to Taxonomy', 'term-importer' ),
+            __( 'Term Importer', 'term-importer' ),
             'manage_options',
-            'terms-to-tax',
+            'term-importer',
             [ self::class, 'render_admin_page' ],
             'dashicons-upload',
             20
@@ -71,11 +71,11 @@ class TermsToTax {
 
         ?>
         <div class="wrap">
-            <h1><?php esc_html_e( 'Terms Importer', 'terms-to-tax' ); ?></h1>
+            <h1><?php esc_html_e( 'Term Importer', 'term-importer' ); ?></h1>
 
             <?php if ( $message === 'success' ) : ?>
                 <div class="notice notice-success is-dismissible">
-                    <p><?php esc_html_e( 'Terms imported successfully!', 'terms-to-tax' ); ?></p>
+                    <p><?php esc_html_e( 'Terms imported successfully!', 'term-importer' ); ?></p>
                 </div>
             <?php elseif ( $message === 'error' && isset( $_GET['error'] ) ) : ?>
                 <div class="notice notice-error is-dismissible">
@@ -84,14 +84,14 @@ class TermsToTax {
             <?php endif; ?>
 
             <form method="post" enctype="multipart/form-data" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
-                <input type="hidden" name="action" value="terms_to_tax_import">
-                <?php wp_nonce_field( 'terms_to_tax_import_nonce', 'terms_to_tax_import_nonce_field' ); ?>
+                <input type="hidden" name="action" value="term_importer_import">
+                <?php wp_nonce_field( 'term_importer_import_nonce', 'term_importer_import_nonce_field' ); ?>
 
                 <table class="form-table">
                     <tbody>
                         <tr>
                             <th scope="row">
-                                <label for="taxonomy"><?php esc_html_e( 'Select Taxonomy:', 'terms-to-tax' ); ?></label>
+                                <label for="taxonomy"><?php esc_html_e( 'Select Taxonomy:', 'term-importer' ); ?></label>
                             </th>
                             <td>
                                 <select name="taxonomy" id="taxonomy" class="regular-text" required>
@@ -99,23 +99,23 @@ class TermsToTax {
                                         <option value="<?php echo esc_attr( $slug ); ?>"><?php echo esc_html( $label ); ?></option>
                                     <?php endforeach; ?>
                                 </select>
-                                <p class="description"><?php esc_html_e( 'Choose the taxonomy where the terms will be imported.', 'terms-to-tax' ); ?></p>
+                                <p class="description"><?php esc_html_e( 'Choose the taxonomy where the terms will be imported.', 'term-importer' ); ?></p>
                             </td>
                         </tr>
 
                         <tr>
                             <th scope="row">
-                                <label for="terms_csv"><?php esc_html_e( 'Upload CSV File:', 'terms-to-tax' ); ?></label>
+                                <label for="terms_csv"><?php esc_html_e( 'Upload CSV File:', 'term-importer' ); ?></label>
                             </th>
                             <td>
                                 <input type="file" name="terms_csv" id="terms_csv" accept=".csv" required>
-                                <p class="description"><?php esc_html_e( 'Upload a CSV file containing the terms you want to import.', 'terms-to-tax' ); ?></p>
+                                <p class="description"><?php esc_html_e( 'Upload a CSV file containing the terms you want to import.', 'term-importer' ); ?></p>
                             </td>
                         </tr>
                     </tbody>
                 </table>
 
-                <?php submit_button( __( 'Import Terms', 'terms-to-tax' ) ); ?>
+                <?php submit_button( __( 'Import Terms', 'term-importer' ) ); ?>
             </form>
         </div>
         <?php
@@ -128,17 +128,17 @@ class TermsToTax {
      */
     public static function handle_import(): void {
         try {
-            if ( ! isset( $_POST['terms_to_tax_import_nonce_field'] ) ||
-                 ! wp_verify_nonce( $_POST['terms_to_tax_import_nonce_field'], 'terms_to_tax_import_nonce' ) ) {
-                throw new ImporterException( __( 'Security check failed', 'terms-to-tax' ) );
+            if ( ! isset( $_POST['term_importer_import_nonce_field'] ) ||
+                 ! wp_verify_nonce( $_POST['term_importer_import_nonce_field'], 'term_importer_import_nonce' ) ) {
+                throw new ImporterException( __( 'Security check failed', 'term-importer' ) );
             }
 
             if ( ! current_user_can( 'manage_options' ) ) {
-                throw new ImporterException( __( 'You do not have permission to perform this action.', 'terms-to-tax' ) );
+                throw new ImporterException( __( 'You do not have permission to perform this action.', 'term-importer' ) );
             }
 
             if ( empty( $_POST['taxonomy'] ) || empty( $_FILES['terms_csv']['tmp_name'] ) ) {
-                throw new ImporterException( __( 'Please select a taxonomy and upload a CSV file.', 'terms-to-tax' ) );
+                throw new ImporterException( __( 'Please select a taxonomy and upload a CSV file.', 'term-importer' ) );
             }
 
             $taxonomy = sanitize_text_field( $_POST['taxonomy'] );
@@ -146,14 +146,14 @@ class TermsToTax {
             // Ensure the selected taxonomy exists.
             $available_taxonomies = self::get_taxonomies();
             if ( ! array_key_exists( $taxonomy, $available_taxonomies ) ) {
-                throw new ImporterException( __( 'Invalid taxonomy selected.', 'terms-to-tax' ) );
+                throw new ImporterException( __( 'Invalid taxonomy selected.', 'term-importer' ) );
             }
 
             // Parse CSV file
             $csv_data = CSVParser::parse( $_FILES['terms_csv']['tmp_name'] );
 
             if ( ! CSVParser::validate( $csv_data ) ) {
-                throw new ImporterException( __( 'Invalid CSV format. Ensure it contains "name", "slug", and "description" columns.', 'terms-to-tax' ) );
+                throw new ImporterException( __( 'Invalid CSV format. Ensure it contains "name", "slug", and "description" columns.', 'term-importer' ) );
             }
 
             // Insert Terms
@@ -172,12 +172,12 @@ class TermsToTax {
                 );
 
                 if ( is_wp_error( $result ) ) {
-                    throw new ImporterException( sprintf( __( 'Could not add the term "%s". It may already exist, have a conflicting slug, contain invalid characters, or be missing required fields.', 'terms-to-tax' ), $term_name ) );
+                    throw new ImporterException( sprintf( __( 'Could not add the term "%s". It may already exist, have a conflicting slug, contain invalid characters, or be missing required fields.', 'term-importer' ), $term_name ) );
                 }
             }
 
             // Get the referring admin page or fallback to default settings page
-            $redirect_url = wp_get_referer() ? wp_get_referer() : admin_url( 'admin.php?page=terms-to-tax' );
+            $redirect_url = wp_get_referer() ? wp_get_referer() : admin_url( 'admin.php?page=term-importer' );
 
             // Add success message
             $redirect_url = add_query_arg( 'message', 'success', $redirect_url );
@@ -191,9 +191,9 @@ class TermsToTax {
 
             // Display the error message in WordPress
             wp_die(
-                '<h1>' . esc_html__( 'Import Error', 'terms-to-tax' ) . '</h1>' .
+                '<h1>' . esc_html__( 'Import Error', 'term-importer' ) . '</h1>' .
                 '<p>' . esc_html( $e->getMessage() ) . '</p>',
-                esc_html__( 'Error Importing Terms', 'terms-to-tax' ),
+                esc_html__( 'Error Importing Terms', 'term-importer' ),
                 [
                     'back_link' => true
                 ]

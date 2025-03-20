@@ -1,5 +1,5 @@
 {
-    "name": "rafyco/terms-to-tax",
+    "name": "rafyco/term-importer",
     "description": "Imports terms from a CSV file into custom taxonomies in WordPress.",
     "type": "wordpress-plugin",
     "license": "GPL-2.0-or-later",
@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "RafyCo\\TermsToTax\\": "includes/"
+            "RafyCo\\TermImporter\\": "includes/"
         }
     }
 }

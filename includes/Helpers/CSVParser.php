@@ -1,6 +1,6 @@
 <?php
 
-namespace RafyCo\TermsToTax\Helpers;
+namespace RafyCo\TermImporter\Helpers;
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.

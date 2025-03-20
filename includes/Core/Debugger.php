@@ -1,6 +1,6 @@
 <?php
 
-namespace RafyCo\TermsToTax\Core;
+namespace RafyCo\TermImporter\Core;
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
@@ -22,7 +22,7 @@ class Debugger {
      */
     public static function log( string $message, array $context = [] ): void {
         if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-            $log_message = '[TermsToTax] ' . $message;
+            $log_message = '[TermImporter] ' . $message;
             
             // Append context only if it is not empty
             if ( ! empty( $context ) ) {
