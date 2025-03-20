@@ -3,7 +3,7 @@
  * Plugin Name:       Term Importer Lite
  * Plugin URI:        https://rafy.com.br/project/term-importer/
  * Description:       Easily import terms into any custom taxonomy in WordPress using a simple CSV file. Save time, streamline your workflow, and manage taxonomies effortlessly—no manual input needed!
- * Version:           1.0.0
+ * Version:           2.0.0
  * Requires at least: 5.2
  * Requires PHP:      7.2
  * Author:            Rafy Co.
