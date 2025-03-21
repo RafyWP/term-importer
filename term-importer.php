@@ -33,8 +33,17 @@ if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
  * Initialize the plugin.
  */
 function term_importer_initialize() {
-    if ( class_exists( 'RafyCo\\TermImporter\\Core\\TermImporter' ) ) {
-        RafyCo\TermImporter\Core\TermImporter::init();
+    if ( class_exists( \RafyCo\TermImporter\Core\TermImporter::class ) ) {
+        \RafyCo\TermImporter\Core\TermImporter::init();
     }
 }
-add_action( 'plugins_loaded', 'term_importer_initialize' );
+add_action( 'plugins_loaded', 'term_importer_initialize', 10 );
+
+if ( ! class_exists( \RafyCo\TermImporter\Core\Deactivator::class ) ) {
+    require_once plugin_dir_path( __FILE__ ) . 'includes/Core/Deactivator.php';
+}
+
+register_deactivation_hook(
+    __FILE__,
+    [ \RafyCo\TermImporter\Core\Deactivator::class, 'deactivate' ]
+);

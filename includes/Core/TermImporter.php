@@ -30,7 +30,7 @@ class TermImporter {
      *
      * @return array<string, string> List of taxonomies with their labels.
      */
-    private static function get_taxonomies(): array {
+    public static function get_taxonomies(): array {
         $taxonomies = get_taxonomies( [ 'public' => true ], 'objects' );
         $taxonomy_options = [];
 
