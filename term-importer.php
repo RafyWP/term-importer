@@ -1,6 +1,17 @@
 <?php
 /**
- * Plugin Name:       Term Importer Lite
+ * Term Importer
+ * 
+ * Easily import terms into any custom taxonomy in WordPress using a simple CSV file. Save time, streamline your workflow, and manage taxonomies effortlessly—no manual input needed!
+ * 
+ * @link              https://rafy.com.br/project/term-importer/
+ * @since             1.0.0
+ * @package           RafyCo\TermImporter
+ * @author            Rafy Co.
+ * @license           GPL-2.0-or-later
+ * 
+ * @wordpress-plugin
+ * Plugin Name:       Term Importer
  * Plugin URI:        https://rafy.com.br/project/term-importer/
  * Description:       Easily import terms into any custom taxonomy in WordPress using a simple CSV file. Save time, streamline your workflow, and manage taxonomies effortlessly—no manual input needed!
  * Version:           1.0.0
@@ -13,18 +24,11 @@
  * Text Domain:       term-importer
  * Domain Path:       /languages
  * Update URI:        https://github.com/RafyWP/term-importer/tree/master
- *
- * @package           RafyCo\TermImporter
- * @author            Rafy Co.
- * @copyright         2025 Rafy Co.
- * @license           GPL-2.0-or-later
+ * Network:           true
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly.
-}
+defined( 'ABSPATH' ) || exit;
 
-// Ensure Composer's autoload is available.
 if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
     require_once __DIR__ . '/vendor/autoload.php';
 }
